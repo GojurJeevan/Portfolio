@@ -53,7 +53,7 @@ export default function Navbar() {
         >
           <Code2 className="h-6 w-6 text-primary" />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-violet-500">
-            G Vamsi Krishna
+            G Jeevan Reddy
           </span>
         </Link>
 

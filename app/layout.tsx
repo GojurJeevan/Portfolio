@@ -8,8 +8,8 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Galeti Vamsi Krishna | Web Developer',
-  description: 'Personal portfolio of Galeti Vamsi Krishna, a passionate web developer specialized in modern JavaScript frameworks.',
+  title: 'Gojur Jeevan Reddy | Web Developer',
+  description: 'Personal portfolio of Gojur Jeevan Reddy, a passionate web developer specialized in modern JavaScript frameworks.',
 };
 
 export default function RootLayout({

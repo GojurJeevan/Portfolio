@@ -10,12 +10,12 @@ export default function Footer() {
         <div className="flex items-center gap-2">
           <Code2 className="h-5 w-5 text-primary" />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-600 dark:from-purple-400 dark:to-violet-400 font-semibold">
-            Galeti Vamsi Krishna
+            G Jeevan Reddy
           </span>
         </div>
         
         <div className="text-sm text-muted-foreground">
-          © {year} Galeti Vamsi Krishna. All rights reserved.
+          © {year} Gojur Jeevan Reddy. All rights reserved.
         </div>
         
         <div className="flex gap-8 text-sm">

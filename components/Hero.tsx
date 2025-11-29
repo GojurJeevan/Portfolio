@@ -33,7 +33,7 @@ export default function Hero() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-4xl md:text-6xl font-bold tracking-tight mb-3"
             >
-              Galeti Vamsi Krishna
+              Gojur Jeevan Reddy
             </motion.h1>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
