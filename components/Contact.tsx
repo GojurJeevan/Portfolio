@@ -17,9 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { 
-  Github, Linkedin, Mail, MapPin, Phone, Send 
-} from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 
 const formSchema = z.object({
@@ -41,20 +39,20 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "janedoe@example.com",
-    href: "mailto:janedoe@example.com",
+    value: "mailme@example.com",
+    href: "mailto:jeevangojur2605@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+91 6789054321",
+    href: "tel:+919392239359",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
-    href: "https://maps.google.com",
+    value: "KPHB,Hyderabad",
+    href: "https://www.google.com/maps/place/Kukatpally+Housing+Board+Colony,+Kukatpally,+Hyderabad,+Telangana/@17.4842087,78.3803164,15z/data=!3m1!4b1!4m6!3m5!1s0x3bcb91b5be1f29c3:0xf5af71d23e422328!8m2!3d17.4833526!4d78.3870668!16s%2Fg%2F1tgq52qt?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
@@ -62,12 +60,12 @@ const socialLinks = [
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/GojurJeevan",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "http://linkedin.com/in/jeevan-reddy-972b7025a",
   },
 ];
 
@@ -92,7 +90,7 @@ export default function Contact() {
     <section id="contact" className="w-full py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <SectionTitle>Get in Touch</SectionTitle>
-        
+
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-5 gap-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -104,11 +102,12 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-semibold mb-4">Let's Connect</h3>
               <p className="text-muted-foreground mb-6">
-                Have a project in mind or just want to say hi? I'd love to hear from you.
-                Fill out the form or reach out directly via the contact information below.
+                Have a project in mind or just want to say hi? I'd love to hear
+                from you. Fill out the form or reach out directly via the
+                contact information below.
               </p>
             </div>
-            
+
             <div className="space-y-4">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
@@ -117,7 +116,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-medium">{item.label}</h4>
-                    <a 
+                    <a
                       href={item.href}
                       className="text-muted-foreground hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
@@ -127,12 +126,12 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-            
+
             <div>
               <h4 className="font-medium mb-3">Follow Me</h4>
               <div className="flex items-center gap-3">
                 {socialLinks.map((link, index) => (
-                  <a 
+                  <a
                     key={index}
                     href={link.href}
                     target="_blank"
@@ -146,7 +145,7 @@ export default function Contact() {
               </div>
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -156,7 +155,10 @@ export default function Contact() {
           >
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-8 border border-slate-200 dark:border-slate-700">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
@@ -165,7 +167,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Jane Doe" {...field} />
+                            <Input placeholder="Jack Sparrow" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -178,14 +180,14 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="jane@example.com" {...field} />
+                            <Input placeholder="jack@example.com" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
-                  
+
                   <FormField
                     control={form.control}
                     name="subject"
@@ -193,13 +195,16 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input placeholder="Subject of your message" {...field} />
+                          <Input
+                            placeholder="Subject of your message"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="message"
@@ -207,17 +212,17 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="Your message here..." 
-                            className="min-h-[120px]" 
-                            {...field} 
+                          <Textarea
+                            placeholder="Your message here..."
+                            className="min-h-[120px]"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <Button type="submit" className="w-full">
                     <Send className="h-4 w-4 mr-2" />
                     Send Message

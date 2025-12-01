@@ -15,10 +15,9 @@ const aboutData = {
     { label: "Fast Learner", icon: Calendar },
   ],
   goals: [
-    "Building innovative web solutions that solve real-world problems",
-    "Contributing to open-source projects and giving back to the community",
-    "Continuously learning new technologies and improving my skills",
-    "Mentoring junior developers and sharing knowledge",
+    "Eager to build modern and user-focused web applications",
+    "Actively exploring and contributing to open-source projects to gain real-world experience",
+    "Always curious to explore new technologies and enhance my skill set",
   ],
 };
 
