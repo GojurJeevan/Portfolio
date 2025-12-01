@@ -222,7 +222,7 @@ export default function GitHubStats() {
           >
             <Card className="h-full">
               <CardHeader>
-                <CardTitle>Yearly Contributions</CardTitle>
+                <CardTitle>Monthly Contributions</CardTitle>
               </CardHeader>
               <CardContent className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
