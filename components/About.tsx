@@ -7,7 +7,7 @@ import SectionTitle from "@/components/SectionTitle";
 
 const aboutData = {
   intro:
-    "I’m an IT graduate who loves turning ideas into scalable and user-friendly software. Whether it’s building responsive web apps, integrating APIs, or solving complex problems with clean code — I enjoy every step of development. I thrive in collaborative teams, adapt quickly, and constantly level up with new technologies.",
+    "Entry-level Software Developer skilled in Java, JavaScript, SQL, and front-end technologies. Strong understanding of OOP , DSA, and REST API concepts with hands-on experience in building responsive web applications. Familiar with Git-based collaboration and Agile methodology. Eager to contribute to full-stack roles while quickly learning modern tech stacks.",
   attributes: [
     { label: "Problem Solver", icon: Trophy },
     { label: "Clean Code Advocate", icon: Award },
