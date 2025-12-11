@@ -67,13 +67,13 @@ export default function GitHubStats() {
       setLoading(true);
       setError(null);
 
-      // Profile
+      // ---------- PROFILE ----------
       const profileRes = await fetch(
         `https://api.github.com/users/${GITHUB_USERNAME}`
       );
       const profile = await profileRes.json();
 
-      // Repos
+      // ---------- REPOS ----------
       const reposRes = await fetch(
         `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=200`
       );
@@ -81,6 +81,7 @@ export default function GitHubStats() {
 
       let stars = 0;
       const langTotals: Record<string, number> = {};
+
       repos.forEach((repo: any) => {
         stars += repo.stargazers_count;
         if (repo.language) {
@@ -99,31 +100,57 @@ export default function GitHubStats() {
               HTML: "#e34c26",
               CSS: "#264de4",
               Java: "#b07219",
-              Python: "#3776AB",
+              Python: "#3572A5",
             }[name] || "#8e8e8e",
         })
       );
 
-      // Contributions from github-contributions-api (flat list of days) [web:50]
-      const contribRes = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`
-      );
-      const contrib = await contribRes.json();
+      const query = `
+        query {
+          user(login: "${GITHUB_USERNAME}") {
+            contributionsCollection {
+              contributionCalendar {
+                totalContributions
+                weeks {
+                  contributionDays {
+                    date
+                    contributionCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      `;
 
-      // contrib.total has keys for each year and "lastYear" [web:50]
-      const contributionsTotal =
-        typeof contrib?.total?.lastYear === "number"
-          ? contrib.total.lastYear
-          : 0;
+      const graphRes = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+        },
+        body: JSON.stringify({ query }),
+      });
 
-      // contrib.contributions is an array of { date, count } [web:50]
-      const days: { date: string; count: number }[] =
-        contrib?.contributions ?? [];
+      const graphData = await graphRes.json();
+
+      const calendar =
+        graphData?.data?.user?.contributionsCollection?.contributionCalendar;
+
+      const contributionsTotal = calendar?.totalContributions ?? 0;
+
+      const days = calendar?.weeks
+        ?.flatMap((w: any) => w.contributionDays)
+        ?.map((d: any) => ({
+          date: d.date,
+          count: d.contributionCount,
+        }));
 
       const monthMap: Record<string, number> = {};
-      days.forEach((day) => {
+
+      days.forEach((day: any) => {
         const date = new Date(day.date);
         if (Number.isNaN(date.getTime())) return;
+
         const month = date.toLocaleString("default", { month: "short" });
         monthMap[month] = (monthMap[month] || 0) + (day.count ?? 0);
       });
@@ -144,8 +171,11 @@ export default function GitHubStats() {
       ];
 
       const monthlyDataset: ContributionMonth[] = monthOrder
-        .filter((m) => monthMap[m])
-        .map((m) => ({ month: m, contributions: monthMap[m] }));
+        .map((m) => ({
+          month: m,
+          contributions: monthMap[m] || 0,
+        }))
+        .filter((m) => m.contributions > 0);
 
       setStats({
         repos: profile.public_repos ?? 0,
@@ -153,6 +183,7 @@ export default function GitHubStats() {
         followers: profile.followers ?? 0,
         contributions: contributionsTotal,
       });
+
       setContributionData(monthlyDataset);
       setLanguageData(languageDataset);
     } catch (err) {
@@ -231,9 +262,7 @@ export default function GitHubStats() {
                       dataKey="month"
                       tick={{ fill: isDark ? "#94a3b8" : "#475569" }}
                     />
-                    <YAxis
-                      tick={{ fill: isDark ? "#94a3b8" : "#475569" }}
-                    />
+                    <YAxis tick={{ fill: isDark ? "#94a3b8" : "#475569" }} />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: isDark ? "#1e293b" : "#ffffff",
@@ -285,9 +314,9 @@ export default function GitHubStats() {
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: isDark ? "#1e293b" : "#ffffff",
-                        borderColor: isDark ? "#334155" : "#e2e8f0",
-                        color: isDark ? "#f8fafc" : "#0f172a",
+                        backgroundColor: "#ffffff", 
+                        borderColor: "#e2e8f0", 
+                        color: "#ffffff", 
                       }}
                     />
                   </PieChart>
