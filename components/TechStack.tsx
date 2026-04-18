@@ -156,10 +156,32 @@ const techCategories = [
           "Backup & Restore",
         ],
       },
+      {
+        name: "Java",
+        level: 80,
+        logo: "https://static.vecteezy.com/system/resources/thumbnails/048/332/150/small_2x/java-programming-language-java-logo-free-png.png",
+        topics: [
+          "OOP Concepts",
+          "Collections Framework",
+          "Exception Handling",
+          "Streams API",
+        ],
+        mastered: [
+          "Object-Oriented Programming (Encapsulation, Inheritance, Polymorphism, Abstraction)",
+          "Core Java Syntax & Data Types",
+          "Collections (List, Set, Map, Queue)",
+          "Exception Handling (try-catch, throw, throws, custom exceptions)",
+          "File Handling (FileReader, BufferedReader, FileWriter)",
+          "Multithreading & Concurrency (Thread, Runnable, ExecutorService)",
+          "Java 8 Features (Streams, Lambda Expressions)",
+          "String Manipulation & Immutable Objects",
+          "Memory Management & Garbage Collection Basics",
+        ],
+      },
     ],
   },
   {
-    name: "DevOps & Tools",
+    name: "Tools",
     skills: [
       {
         name: "Git",
